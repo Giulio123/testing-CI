@@ -1,13 +1,15 @@
 package com.example.testingCI;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-@SpringBootTest
 class TestingCiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	 private TestingCI testingCI = new TestingCI();
+
+     @Test
+     public void testSum() {
+          assertEquals(5, testingCI.sum(2, 3));
+     }
 
 }
