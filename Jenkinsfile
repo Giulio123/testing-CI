@@ -3,7 +3,9 @@ pipeline {
 	triggers {
         	pollSCM('* * * * *')
     	}
-   stage('Sonarqube') {
+	stages {
+
+		stage('Sonarqube') {
     environment {
         scannerHome = tool 'SonarQubeScanner'
     }
@@ -16,7 +18,6 @@ pipeline {
         }
     }
    }
-	stages {
 		stage("Compile") {
 			steps {
 				sh "./gradlew compileJava"
