@@ -5,6 +5,14 @@ pipeline {
     	}
 	stages {
 
+
+		stage("Compile") {
+			steps {
+				sh "./gradlew compileJava"
+			}
+		}
+
+
 		stage('Sonarqube') {
     environment {
         scannerHome = tool 'SonarQubeScanner'
@@ -18,11 +26,7 @@ pipeline {
         }
     }
    }
-		stage("Compile") {
-			steps {
-				sh "./gradlew compileJava"
-			}
-		}
+		
 		stage("Unit test") {
 			steps {
 				sh "./gradlew test"
